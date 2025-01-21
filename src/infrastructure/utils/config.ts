@@ -12,5 +12,12 @@ export function configureDependencies() {
     const getDespesasByUserUseCase = new GetDespesasByUserUseCase(repositoryData);
     const despesaController = new DespesaController(createDespesaUseCase, getDespesasByUserUseCase);
 
-    return{ despesaController};
+    const repositoryAI = new RepositoryAI();
+    const createChatUseCase = new CreateChatUseCase(repositoryAI,repositoryData );
+    const chatController = new ChatController(createChatUseCase);
+
+
+
+
+    return{ despesaController,chatController };
 } 
